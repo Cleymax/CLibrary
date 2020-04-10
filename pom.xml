@@ -71,6 +71,14 @@
         </profile>
     </profiles>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>16.0.1</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>${project.name}-${revision}</finalName>
         <defaultGoal>clean package</defaultGoal>
