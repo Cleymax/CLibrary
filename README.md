@@ -5,6 +5,7 @@
 
 <div align="center">
 
+  [![Java CI with Maven](https://github.com/Cleymax/CLibrary/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/Cleymax/CLibrary/actions)
   [![GitHub stars](https://img.shields.io/github/stars/Cleymax/CLibrary.svg)](https://github.com/Cleymax/CLibrary/stargazers)
   [![GitHub Issues](https://img.shields.io/github/issues/Cleymax/CLibrary.svg)](https://github.com/Cleymax/CLibrary/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Cleymax/CLibrary.svg)](https://github.com/Cleymax/CLibrary/pulls)
