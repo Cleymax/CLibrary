@@ -123,3 +123,13 @@ buildNumber.properties
 ### Intelij ###
 # Discord Integration
 .idea/discord.xml
+
+# Makdown Navigator
+.idea/markdown-navigator-enh.xml
+.idea/markdown-navigator.xml
+
+# SonarLint
+.idea/sonarlint/*
+
+# Others
+.idea/jarRepositories.xml
