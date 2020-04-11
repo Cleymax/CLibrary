@@ -101,7 +101,7 @@ public final class CLibrary {
 		{
 			try
 			{
-				String repoUrl = sUrl;
+				String repoUrl = sUrl.equals(dependency.repository().url()) ? sUrl : dependency.repository().url();
 				if (!repoUrl.endsWith("/"))
 					repoUrl += "/";
 
@@ -115,7 +115,7 @@ public final class CLibrary {
 				}
 				catch (IOException e)
 				{
-					LOGGER.log(Level.SEVERE, "Can't copy file from InputStream", e);
+					LOGGER.log(Level.SEVERE, "Unable to download jar file from "  + url.toString() + " !", e);
 
 					if (!sUrl.equals(MAVEN_CENTRAL_URL))
 					{
@@ -127,7 +127,7 @@ public final class CLibrary {
 			}
 			catch (MalformedURLException e)
 			{
-				throw new RuntimeException("Can't get the dependency !", e);
+				throw new RuntimeException("Unable to get the dependency !", e);
 			}
 		}
 
@@ -144,7 +144,7 @@ public final class CLibrary {
 		}
 		catch (Exception e)
 		{
-			throw new RuntimeException("Unable to load dependency: " + dependency.artifactId(), e);
+			throw new RuntimeException("Unable to load dependency: " + dependency.artifactId() + "in classloader !", e);
 		}
 
 		LOGGER.log(Level.INFO, "Loaded dependency {0} v{1} !", new Object[]{dependency.artifactId(), dependency.version()});
