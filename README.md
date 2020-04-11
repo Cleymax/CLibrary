@@ -14,7 +14,7 @@
 
 ---
 
-<p align="center"> Api for downloading and loading the necessary dependencies into the classloader.
+<p align="center"> Api to download and load the necessary dependencies into the classloader.
     <br>
 </p>
 
@@ -38,9 +38,9 @@ First you need to retrieve CLibrary.
 
 You can download the jar file in the releases. [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Cleymax/CLibrary)](https://github.com/Cleymax/CLibrary/releases)
 
-Or get from github packages: [https://github.com/Cleymax/CLibrary/packages](https://github.com/Cleymax/CLibrary/packages)
+Or get it from github packages: [https://github.com/Cleymax/CLibrary/packages](https://github.com/Cleymax/CLibrary/packages)
 
-Or get from my personal repository:
+Or get it from my personal repository:
 
 - Maven
 
@@ -74,7 +74,7 @@ compile 'fr.cleymax:CLibrary:1.0.1'
 
 ### Use
 
-Example, you need Gson in your project.  Add the annotation `@Dependency` on any class to load Gson.
+Example, you need [Gson](https://github.com/google/gson) in your project.  Add the annotation `@Dependency` on any class to load [Gson](https://github.com/google/gson) .
 
 ```java
 import fr.cleymax.clibrary.CLibrary;
@@ -96,7 +96,7 @@ You can choose where the dependencies are stored and downloaded.
 final CLibrary library = new CLibrary(Main.class, new File("dependancies/"));
 ```
 
-You can initialize an instance of `CLibrary` with no parameters. But the method `CLibrary#loads()` can no longer be used!
+You can initialize an instance of `CLibrary` without any parameters. But the method `CLibrary#loads()` can no longer be used!
 ```java
 final CLibrary library = new CLibrary();
 ```
