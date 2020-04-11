@@ -52,6 +52,11 @@
             <id>cleymax-releases</id>
             <url>https://repo.cleymax.fr/repository/maven-releases/</url>
         </repository>
+<!--        <repository>-->
+<!--            <id>github</id>-->
+<!--            <name>GitHub OWNER Apache Maven Packages</name>-->
+<!--            <url>https://maven.pkg.github.com/Cleymax/Clibrary</url>-->
+<!--        </repository>-->
     </distributionManagement>
 
     <properties>
