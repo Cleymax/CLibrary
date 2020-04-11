@@ -45,33 +45,56 @@ public final class CLibrary {
 	private final Class<?> main;
 	private final File     folder;
 
+	/**
+	 * Create an instance for CLibrary. It is not recommended because the main class will be null!
+	 */
 	public CLibrary()
 	{
 		this(null);
 	}
 
+	/**
+	 * Create an instance for CLibrary with the main class.
+	 * @param main - Class for add dependency into the classloader.
+	 */
 	public CLibrary(Class<?> main)
 	{
 		this(main, new File("libs"));
 	}
 
+	/**
+	 * Create an instance for CLibrary with the main class and the lib's folder.
+	 * @param main   - Class for add dependency into the classloader.
+	 * @param folder - Folder where jar files, dependencies that are downloaded are saved.
+	 */
 	public CLibrary(Class<?> main, File folder)
 	{
 		this.main = main;
 		this.folder = folder;
 	}
 
+	/**
+	 * Load all the dependencies of the main class or of the class which is passed as a parameter in the constructor
+	 */
 	public void loads()
 	{
 		Objects.requireNonNull(main);
 		load(main);
 	}
 
+	/**
+	 * Load all the dependencies of the class of the object which is passed as a parameter.
+	 * @param object - an object.
+	 */
 	public void load(@NotNull Object object)
 	{
 		load(object.getClass());
 	}
 
+	/**
+	 * Load all the dependencies of the class which is passed as a parameter.
+	 * @param classz - a class.
+	 */
 	public void load(Class<?> classz)
 	{
 		Dependency[] libraries = classz.getDeclaredAnnotationsByType(Dependency.class);
@@ -87,6 +110,16 @@ public final class CLibrary {
 			Arrays.stream(libraries).forEach(library -> load(library, MAVEN_CENTRAL_URL));
 	}
 
+	/**
+	 * Load a dependency. If it has already been downloaded before it will be loaded directly. Otherwise it will be downloaded to the repo which is
+	 * passed as a parameter.
+	 * <p>
+	 * If it is not the default url which is passed as a parameter and the download does not succeed, this function will be called again with the
+	 * default url.
+	 * </p>
+	 * @param dependency - the annotation.
+	 * @param sUrl       - the url of the repository to download the jar file.
+	 */
 	private void load(Dependency dependency, String sUrl)
 	{
 		LOGGER.log(Level.INFO, "Loading dependency {0}:{1}:{2} from {3}", new Object[]{dependency.groupId(), dependency.artifactId(), dependency.version(), dependency.repository().url()});
@@ -115,7 +148,7 @@ public final class CLibrary {
 				}
 				catch (IOException e)
 				{
-					LOGGER.log(Level.SEVERE, "Unable to download jar file from "  + url.toString() + " !", e);
+					LOGGER.log(Level.SEVERE, "Unable to download jar file from " + url.toString() + " !", e);
 
 					if (!sUrl.equals(MAVEN_CENTRAL_URL))
 					{
