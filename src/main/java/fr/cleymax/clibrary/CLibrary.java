@@ -97,17 +97,31 @@ public final class CLibrary {
 	 */
 	public void load(Class<?> classz)
 	{
-		Dependency[] libraries = classz.getDeclaredAnnotationsByType(Dependency.class);
+		Dependencies[] dependencies = classz.getDeclaredAnnotationsByType(Dependencies.class);
+		Dependency[]   libraries    = classz.getDeclaredAnnotationsByType(Dependency.class);
 
-		if (libraries == null)
+		if (libraries == null && dependencies == null)
 			return;
 
 		Repository repository = classz.getAnnotation(Repository.class);
 
-		if (repository != null)
-			Arrays.stream(libraries).forEach(library -> load(library, repository.url()));
-		else
-			Arrays.stream(libraries).forEach(library -> load(library, MAVEN_CENTRAL_URL));
+		if (dependencies != null)
+		{
+			Arrays.stream(dependencies).forEach(dep -> {
+				if (repository != null)
+					Arrays.stream(dep.value()).forEach(library -> load(library, repository.url()));
+				else
+					Arrays.stream(dep.value()).forEach(library -> load(library, MAVEN_CENTRAL_URL));
+			});
+		}
+
+		if (libraries != null)
+		{
+			if (repository != null)
+				Arrays.stream(libraries).forEach(library -> load(library, repository.url()));
+			else
+				Arrays.stream(libraries).forEach(library -> load(library, MAVEN_CENTRAL_URL));
+		}
 	}
 
 	/**
