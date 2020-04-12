@@ -99,16 +99,16 @@ import fr.cleymax.clibrary.Dependencies;
 import fr.cleymax.clibrary.Dependency;
 
 @Dependencies({
-		@Dependency(groupId = "com.google.code.gson", artifactId = "gson", version = "2.8.6"),
-		@Dependency(groupId = "com.googlecode.json-simple", artifactId = "json-simple", version = "1.1.1")
+  @Dependency(groupId = "com.google.code.gson", artifactId = "gson", version = "2.8.6"),
+  @Dependency(groupId = "com.googlecode.json-simple", artifactId = "json-simple", version = "1.1.1")
 })
 public class Main {
 
-	public static void main(String[] args)
-	{
-		final CLibrary library = new CLibrary(Main.class);  //Initialize a new instance of `CLibrary`.
-		library.loads(); //Load all dependencies of the class that is set as a parameter when initializing the `CLibrary' instance.
-	}
+  public static void main(String[] args)
+  {
+    final CLibrary library = new CLibrary(Main.class);  //Initialize a new instance of `CLibrary`.
+    library.loads(); //Load all dependencies of the class that is set as a parameter when initializing the `CLibrary' instance.
+  }
 }
 ```
 
