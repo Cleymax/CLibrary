@@ -109,18 +109,18 @@ public final class CLibrary {
 		{
 			Arrays.stream(dependencies).forEach(dep -> {
 				if (repository != null)
-					Arrays.stream(dep.value()).forEach(library -> load(library, repository.url()));
+					Arrays.stream(dep.value()).forEach(library -> load(classz, library, repository.url()));
 				else
-					Arrays.stream(dep.value()).forEach(library -> load(library, MAVEN_CENTRAL_URL));
+					Arrays.stream(dep.value()).forEach(library -> load(classz, library, MAVEN_CENTRAL_URL));
 			});
 		}
 
 		if (libraries != null)
 		{
 			if (repository != null)
-				Arrays.stream(libraries).forEach(library -> load(library, repository.url()));
+				Arrays.stream(libraries).forEach(library -> load(classz, library, repository.url()));
 			else
-				Arrays.stream(libraries).forEach(library -> load(library, MAVEN_CENTRAL_URL));
+				Arrays.stream(libraries).forEach(library -> load(classz, library, MAVEN_CENTRAL_URL));
 		}
 	}
 
@@ -134,7 +134,7 @@ public final class CLibrary {
 	 * @param dependency - the annotation.
 	 * @param sUrl       - the url of the repository to download the jar file.
 	 */
-	private void load(Dependency dependency, String sUrl)
+	private void load(Class<?> classz, Dependency dependency, String sUrl)
 	{
 		LOGGER.log(Level.INFO, "Loading dependency {0}:{1}:{2} from {3}", new Object[]{dependency.groupId(), dependency.artifactId(), dependency.version(), dependency.repository().url()});
 
@@ -167,7 +167,7 @@ public final class CLibrary {
 					if (!sUrl.equals(MAVEN_CENTRAL_URL))
 					{
 						LOGGER.info("Retry with maven central !");
-						load(dependency, MAVEN_CENTRAL_URL);
+						load(classz, dependency, MAVEN_CENTRAL_URL);
 						return;
 					}
 				}
@@ -183,7 +183,7 @@ public final class CLibrary {
 			throw new RuntimeException("Unable to download the dependency !");
 		}
 
-		URLClassLoader classLoader = (URLClassLoader) main.getClassLoader();
+		URLClassLoader classLoader = (URLClassLoader) classz.getClassLoader();
 
 		try
 		{
