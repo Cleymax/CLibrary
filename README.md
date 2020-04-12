@@ -56,7 +56,7 @@ Or get it from my personal repository:
 <dependency>
     <groupId>fr.cleymax</groupId>
     <artifactId>CLibrary</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -70,7 +70,7 @@ maven {
 }
 
 // Add to dependencies
-compile 'fr.cleymax:CLibrary:1.0.2'
+compile 'fr.cleymax:CLibrary:1.0.3'
 ```
 
 ### Use

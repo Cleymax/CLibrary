@@ -6,6 +6,7 @@ import org.junit.Test;
  * File <b>TestClibrary</b> located on fr.cleymax.clibrary is a part of CLibrary. Created the 12/04/2020
  * <p>
  * @author Clément P. (Cleymax)
+ * @since 1.0.3
  */
 
 public class TestClibrary {

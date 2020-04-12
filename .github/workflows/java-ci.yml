@@ -18,8 +18,8 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Zip file
-      run: zip CLibrary.zip target/CLibrary-1.0.2-SNAPSHOT.jar target/original-CLibrary-1.0.2-SNAPSHOT.jar
+      run: zip CLibrary.zip target/CLibrary-1.0.3-SNAPSHOT.jar target/original-CLibrary-1.0.3-SNAPSHOT.jar
     - uses: actions/upload-artifact@v1
       with:
-        name: CLibrary-v1.0.2
+        name: CLibrary-v1.0.3
         path: CLibrary.zip
