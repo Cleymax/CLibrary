@@ -56,7 +56,7 @@ Or get it from my personal repository:
 <dependency>
     <groupId>fr.cleymax</groupId>
     <artifactId>CLibrary</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -70,7 +70,7 @@ maven {
 }
 
 // Add to dependencies
-compile 'fr.cleymax:CLibrary:1.0.1'
+compile 'fr.cleymax:CLibrary:1.0.2'
 ```
 
 ### Use
@@ -89,6 +89,26 @@ public class Main {
     final CLibrary library = new CLibrary(Main.class);  //Initialize a new instance of `CLibrary`.
     library.loads(); //Load all dependencies of the class that is set as a parameter when initializing the `CLibrary' instance.
   }
+}
+```
+
+You can load several dependencies in one class.
+```java
+import fr.cleymax.clibrary.CLibrary;
+import fr.cleymax.clibrary.Dependencies;
+import fr.cleymax.clibrary.Dependency;
+
+@Dependencies({
+		@Dependency(groupId = "com.google.code.gson", artifactId = "gson", version = "2.8.6"),
+		@Dependency(groupId = "com.googlecode.json-simple", artifactId = "json-simple", version = "1.1.1")
+})
+public class Main {
+
+	public static void main(String[] args)
+	{
+		final CLibrary library = new CLibrary(Main.class);  //Initialize a new instance of `CLibrary`.
+		library.loads(); //Load all dependencies of the class that is set as a parameter when initializing the `CLibrary' instance.
+	}
 }
 ```
 

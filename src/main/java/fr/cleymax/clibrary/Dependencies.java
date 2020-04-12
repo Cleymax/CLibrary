@@ -9,6 +9,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * File <b>Dependencies</b> located on fr.cleymax.clibrary is a part of CLibrary. Created the 12/04/2020
  * <p>
  * @author Clément P. (Cleymax) Class to load multiple dependencies.
+ * @since 1.0.2
  */
 @Documented
 @Target(TYPE)
